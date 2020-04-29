@@ -1,0 +1,15 @@
+<view class="container">
+<block wx:if ='{{result.is_superuser}}'>
+<view class='capital'> 欢迎 管理员 登陆本系统</view>
+<button>根据编号查看用户</button>
+<button>查看所有用户</button>
+<button>创建用户</button>
+</block>
+<block wx:else>
+  <view>亲爱的 {{result.full_name}} 用户! 欢迎登录本系统 </view>
+</block>
+
+<button>重置密码</button>
+<button>编辑个人信息</button>
+<button>重置密码</button>
+</view>
