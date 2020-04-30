@@ -1,0 +1,13 @@
+<!--pages/admin/readUserById.wxml-->
+<view> 请选择查找方式</view>
+
+<input bindinput='getUsernum' placeholder="请输入用户手机号或者email"></input>
+<button bindtap="getUser">搜索</button>
+<block wx:if="{{status}}">
+<view>email： {{result.email}}</view>
+<view>未被被冻结：{{result.is_active}}</view>
+<view>名称：{{result.full_name}}</view>
+<view>id数字：{{result.id}}</view>
+</block>
+<block wx:else>{{result}}</block>
+<view>第{{time}}次查询</view>

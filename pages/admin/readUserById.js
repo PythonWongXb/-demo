@@ -1,72 +1,51 @@
-// pages/center/center.js
+// pages/admin/readUserById.js
 var appInstance = getApp()
-console.log(appInstance.globalData.cookie)
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+  value:[],
+  time:0
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  getUsernum:function(e){
+    this.setData({usernum: e.detail.value})
+  },
+
   getUser: function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/me',
+      url: 'http://192.168.1.104:8888/api/v1/users/SearchEmail/'+that.data.usernum,
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie
       },
       success: function(res){
-      that.setData({result: res.data})
-      console.log(that.data.result)
+      if (res.statusCode == 200){
+        that.setData({result: res.data})
+        that.setData({status:true})
+        console.log(that.data.result)
+      }else{
+        that.setData({result:"抱歉，查无此人"})
+        that.setData({status:false})
+      }
+      that.data.time += 1
+      that.setData({time: that.data.time})
+      
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  gifts:function(){
-  wx.navigateTo({
-    url: '../gifts/gifts',
-  })
+  getclick:function(e){
+
   },
 
-
-  goToeditInfos:function(){
-    wx.navigateTo({
-      url: '../all/editUserInfo',
-    })
-  },
-
-  goTorestPassword:function(){
-    wx.navigateTo({
-      url: '../restpassword/restpassword',
-    })
-  },
-
-  readUserById:function(){
-    wx.navigateTo({
-      url: '../admin/readUserById',
-    })
-  },
-
-  readUsers:function(){
-    wx.navigateTo({
-      url: '../admin/readUsers',
-    })
-  },
-
-  creatUser:function(){
-    wx.navigateTo({
-      url: '../admin/creatUser',
-    })
-  },
-
-  
   onLoad: function (options) {
-  this.getUser()
-  
+
   },
 
   /**

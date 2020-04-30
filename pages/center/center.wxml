@@ -1,15 +1,19 @@
 <view class="container">
 <block wx:if ='{{result.is_superuser}}'>
 <view class='capital'> 欢迎 管理员 登陆本系统</view>
-<button>根据编号查看用户</button>
-<button>查看所有用户</button>
-<button>创建用户</button>
+<button bindtap="readUserById">根据编号查看用户</button>
+<button bindtap="readUsers">查看所有用户</button>
+<button bindtap="creatUser">创建用户</button>
 </block>
 <block wx:else>
   <view>亲爱的 {{result.full_name}} 用户! 欢迎登录本系统 </view>
 </block>
+<view>尊敬的会员</view>
+<view>您的剪头次数还剩：{{ time }}次</view>
+<view>您的的积分累计为 {{  scores }} </view>
+<view bindtap="gifts">足够积分可以兑换好礼哦！点击查看详细积分兑换介绍</view>
 
-<button>重置密码</button>
-<button>编辑个人信息</button>
-<button>重置密码</button>
+<view></view>
+<button bindtap="goToeditInfos">编辑个人信息</button>
+<button bindtap="goTorestPassword">重置密码</button>
 </view>

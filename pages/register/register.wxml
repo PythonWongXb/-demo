@@ -1,0 +1,37 @@
+<!--pages/login/login.wxml-->
+<view class="content">
+<view class="account">
+    <view class="title">用户名称</view>
+    <view class="num"><input bindinput="getAccountName" placeholder="请填写用户名称" placeholder-style="color:#999999;" maxlength="32"/></view>
+  </view>
+  <view class="account">
+    <view class="title">注册账号</view>
+    <view class="num"><input bindinput="getAccountEmail" placeholder="用户名/邮箱/手机号" placeholder-style="color:#999999;"/></view>
+  </view>
+  <view class="hr"></view>
+  <view class="account">
+    <view class="title">密码</view>
+    <view class="num">
+        <input bindinput="getPassword_1" placeholder="请输入密码" password='{{passwordType}}' placeholder-style="color:#999999;"/>
+      
+    </view>
+  </view>
+   <view class="account">
+    <view class="title">确认密码</view>
+    <view class="num">
+      <input bindinput="getPassword_2" placeholder="请再次输入密码" password='{{passwordType}}' placeholder-style="color:#999999;"/>
+      <image src='{{defaultType? "../images/close.gif": "../images/open.gif"}}' class='showpassword' bindtap='eyeStatus'></image>
+    </view>
+  </view>
+  <!-- 请输入验证码 -->
+
+  <image class="image" src="{{imageLoad}}" bindtap="guid"></image>
+  <view class="account">
+    <view class="title">验证码</view>
+    <view class="num"><input type="number" maxlength="4" bindinput="getNumber" placeholder="请输入验证码" placeholder-style="color:#999999;"/></view>
+  </view>
+<view class="hr"></view>
+<view>{{ result }}</view>
+<button class="btn" disabled="{{disabled}}" type="{{btnstate}}"bindtap="formSubmit">注册</button>
+</view>
+

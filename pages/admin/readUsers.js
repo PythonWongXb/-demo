@@ -1,6 +1,5 @@
-// pages/center/center.js
+// pages/admin/readUsers.js
 var appInstance = getApp()
-console.log(appInstance.globalData.cookie)
 Page({
 
   /**
@@ -12,7 +11,7 @@ Page({
   getUser: function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/me',
+      url: 'http://192.168.1.104:8888/api/v1/users/SearchAll',
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie
@@ -26,47 +25,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  gifts:function(){
-  wx.navigateTo({
-    url: '../gifts/gifts',
-  })
-  },
-
-
-  goToeditInfos:function(){
-    wx.navigateTo({
-      url: '../all/editUserInfo',
-    })
-  },
-
-  goTorestPassword:function(){
-    wx.navigateTo({
-      url: '../restpassword/restpassword',
-    })
-  },
-
-  readUserById:function(){
-    wx.navigateTo({
-      url: '../admin/readUserById',
-    })
-  },
-
-  readUsers:function(){
-    wx.navigateTo({
-      url: '../admin/readUsers',
-    })
-  },
-
-  creatUser:function(){
-    wx.navigateTo({
-      url: '../admin/creatUser',
-    })
-  },
-
-  
   onLoad: function (options) {
   this.getUser()
-  
   },
 
   /**
