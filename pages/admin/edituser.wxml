@@ -1,0 +1,14 @@
+<!--pages/admin/edituser.wxml-->
+<view>用户为：{{results.email}}</view>
+<view>用户名：{{results.full_name}}</view>
+<view>用户是否被冻结{{results.is_active}}</view>
+<view>用户编号{{results.id}}</view>
+
+<view>你要修改的</view>
+<view>名字</view>
+<input placeholder="修改后的名字"></input>
+<view>是否被冻结</view>
+<input placeholder="是否被冻结"></input>
+<view>密码</view>
+<input placeholder="修改后的密码"></input>
+<button>提交</button>

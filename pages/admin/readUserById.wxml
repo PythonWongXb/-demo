@@ -1,13 +1,38 @@
 <!--pages/admin/readUserById.wxml-->
+
+<view class="container">
 <view> 请选择查找方式</view>
 
 <input bindinput='getUsernum' placeholder="请输入用户手机号或者email"></input>
-<button bindtap="getUser">搜索</button>
+<button bindtap="getUserNum">搜索email</button>
+<input bindinput='getUserid' placeholder="请输入用户id"></input>
+<button bindtap="getUserId">搜索id</button>
+<input bindinput='getUsername' placeholder="请输入用户名字"></input>
+<button bindtap="getUserName">搜索名字</button>
+
+
+
 <block wx:if="{{status}}">
-<view>email： {{result.email}}</view>
-<view>未被被冻结：{{result.is_active}}</view>
-<view>名称：{{result.full_name}}</view>
-<view>id数字：{{result.id}}</view>
+  <view class="items">
+    <view>email： {{result.email}}</view>
+    <!-- <view>未被被冻结：{{result.is_active}}</view> -->
+    <view>名称：{{result.full_name}}</view>
+    <image src="../images/open.gif" data-email="{{ result.email }}" bindtap="editInfo"></image>
+    <!-- <view>id数字：{{result.id}}</view> -->
+  </view>
 </block>
-<block wx:else>{{result}}</block>
+
+<block wx:else if="{{ statuses }}">
+<view wx:for="{{ results }}">
+  <view class="items">
+    <view>email： {{item.email}}</view>
+    <!-- <view>未被被冻结：{{item.is_active}}</view> -->
+    <view>名称：{{item.full_name}}</view>
+    <image src="../images/open.gif" data-email="{{ item.email }}" bindtap="editInfo"></image>
+    <!-- <view>id数字：{{item.id}}</view> -->
+  </view>
+</view>
+</block>
+<view>{{ error }}</view>
 <view>第{{time}}次查询</view>
+</view>

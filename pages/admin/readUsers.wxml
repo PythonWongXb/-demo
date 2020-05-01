@@ -1,9 +1,9 @@
 <!--pages/admin/readUsers.wxml-->
 <view>
     <view wx:for='{{result}}' wx:key='index'>
-     <view>{{item.email}}</view>
-     <view>{{item.id}}</view>
-     <view>{{item.full_name}}</view>
-     <view>{{item.is_active}}</view>
+     <view>用户email：{{item.email}}</view>
+     <view>用户Id：{{item.id}}</view>
+     <view>用户名称：{{item.full_name}}</view>
+     <view>用户活跃情况：{{item.is_active}}</view>
     </view>
 </view>

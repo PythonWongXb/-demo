@@ -1,4 +1,5 @@
-// pages/admin/creatUser.js
+// pages/admin/edituser.js
+var appInstance = getApp()
 Page({
 
   /**
@@ -7,12 +8,30 @@ Page({
   data: {
 
   },
+  getUserInfo: function(){
+    var that = this;
+    wx.request({
+      url: 'http://192.168.1.104:8888/api/v1/users/SearchEmail/'+ appInstance.globalData.email,
+      header: {
+        "content-type": "application/json",
+        "authorization": appInstance.globalData.cookie
+      },
+      success: function(res){
+      if (res.statusCode == 200){
+        that.setData({results: res.data})
+        console.log(that.data.results)
+      }
+      }
+    })
+  },
+  getclick:function(e){
 
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  this.getUserInfo()
   },
 
   /**

@@ -1,1 +1,19 @@
 /* pages/admin/readUserById.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+.items{
+  display: flex;
+  flex-direction: raw;
+}
+
+image{
+  vertical-align: middle;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+
+}

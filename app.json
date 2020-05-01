@@ -5,9 +5,9 @@
     "pages/register/register",
     "pages/restpassword/restpassword",
     "pages/admin/readUsers",
-    "pages/admin/restPassword",
+    "pages/admin/edituser",
     "pages/admin/readUserById",
-    "pages/admin/creatUser",
+ 
     
     "pages/all/restUserPassword",
     "pages/all/editUserInfo",

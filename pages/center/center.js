@@ -57,11 +57,6 @@ Page({
     })
   },
 
-  creatUser:function(){
-    wx.navigateTo({
-      url: '../admin/creatUser',
-    })
-  },
 
   
   onLoad: function (options) {

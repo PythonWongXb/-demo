@@ -1,9 +1,9 @@
 <view class="container">
 <block wx:if ='{{result.is_superuser}}'>
 <view class='capital'> 欢迎 管理员 登陆本系统</view>
-<button bindtap="readUserById">根据编号查看用户</button>
+<button bindtap="readUserById">查找用户</button>
 <button bindtap="readUsers">查看所有用户</button>
-<button bindtap="creatUser">创建用户</button>
+
 </block>
 <block wx:else>
   <view>亲爱的 {{result.full_name}} 用户! 欢迎登录本系统 </view>
