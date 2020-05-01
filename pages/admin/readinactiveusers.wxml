@@ -1,0 +1,12 @@
+<!--pages/admin/readinactiveusers.wxml-->
+<block wx:if="{{result}}">
+<view>
+  <view wx:for="{{ result }}" wx:key='index'>
+    <view>{{ item.full_name }}</view>
+    <view>{{ item.id }}</view>
+    <view>{{ item.email }}</view>
+  </view>
+</view>
+</block>
+
+<block wx:else><view>没有被封的账号</view></block>

@@ -7,11 +7,10 @@
     "pages/admin/readUsers",
     "pages/admin/edituser",
     "pages/admin/readUserById",
- 
-    
     "pages/all/restUserPassword",
     "pages/all/editUserInfo",
-    "pages/gifts/gifts"
+    "pages/gifts/gifts",
+    "pages/admin/readinactiveusers"
   ],
   "window":{
     "backgroundTextStyle":"light",

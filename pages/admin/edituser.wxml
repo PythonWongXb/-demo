@@ -1,14 +1,32 @@
 <!--pages/admin/edituser.wxml-->
-<view>用户为：{{results.email}}</view>
-<view>用户名：{{results.full_name}}</view>
-<view>用户是否被冻结{{results.is_active}}</view>
 <view>用户编号{{results.id}}</view>
+<view>用户为：{{results.email}}</view>
+<view class="yn">
+<view>当前用户名：{{results.full_name}}</view>
+<image src='{{defaultType? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='eyeStatus'></image>
+</view>
+<block wx:if="{{ passwordType }}">
+<input placeholder="请输入更改后的用户名" maxlength="32" bindinput="getChangeName"></input>
+</block>
 
-<view>你要修改的</view>
-<view>名字</view>
-<input placeholder="修改后的名字"></input>
-<view>是否被冻结</view>
-<input placeholder="是否被冻结"></input>
-<view>密码</view>
-<input placeholder="修改后的密码"></input>
-<button>提交</button>
+<view class="yn">
+<view>冻结情况：</view>
+<block wx:if="{{is_active}}"><view>激活状态</view></block>
+<block wx:else><view>冻结中</view></block>
+<image src='{{pictype? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changestatus'></image>
+</view>
+
+
+
+
+<view class="yn">
+<view>修改密码</view>
+<image src='{{defaultTypepsw? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changePassowrd'></image>
+</view>
+<block wx:if="{{ changpassword }}">
+<input placeholder="修改后的密码" bindinput="getChangePassowrd"></input>
+</block>
+<button bindtap="updateUserInfo">提交</button>
+
+<block wx:if="{{ echo }}"><view>提交成功</view></block>
+

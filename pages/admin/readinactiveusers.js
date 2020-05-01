@@ -1,6 +1,5 @@
-// pages/center/center.js
+// pages/admin/readinactiveusers.js
 var appInstance = getApp()
-console.log(appInstance.globalData.cookie)
 Page({
 
   /**
@@ -12,60 +11,27 @@ Page({
   getUser: function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/me',
+      url: 'http://192.168.1.104:8888/api/v1/users/SearchInactiveUsers',
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie
       },
       success: function(res){
-      that.setData({result: res.data})
-      console.log(that.data.result)
+        if(res.statusCode==200){
+          that.setData({result: res.data})
+          console.log(that.data.result)
+        }else{
+          that.setData({result: false})
+        }
+      
       }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  gifts:function(){
-  wx.navigateTo({
-    url: '../gifts/gifts',
-  })
-  },
-
-
-  goToeditInfos:function(){
-    wx.navigateTo({
-      url: '../all/editUserInfo',
-    })
-  },
-
-  goTorestPassword:function(){
-    wx.navigateTo({
-      url: '../restpassword/restpassword',
-    })
-  },
-
-  readUserById:function(){
-    wx.navigateTo({
-      url: '../admin/readUserById',
-    })
-  },
-
-  readUsers:function(){
-    wx.navigateTo({
-      url: '../admin/readUsers',
-    })
-  },
-
-  readInactiveUsers:function(){
-    wx.navigateTo({
-      url: '../admin/readinactiveusers',
-    })
-  },
-  
   onLoad: function (options) {
-  this.getUser()
-  
+    this.getUser()
   },
 
   /**

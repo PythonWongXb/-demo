@@ -3,11 +3,11 @@
 <view class='capital'> 欢迎 管理员 登陆本系统</view>
 <button bindtap="readUserById">查找用户</button>
 <button bindtap="readUsers">查看所有用户</button>
-
+<button bindtap="readInactiveUsers">封号名单</button>
 </block>
 <block wx:else>
   <view>亲爱的 {{result.full_name}} 用户! 欢迎登录本系统 </view>
-</block>
+
 <view>尊敬的会员</view>
 <view>您的剪头次数还剩：{{ time }}次</view>
 <view>您的的积分累计为 {{  scores }} </view>
@@ -16,4 +16,5 @@
 <view></view>
 <button bindtap="goToeditInfos">编辑个人信息</button>
 <button bindtap="goTorestPassword">重置密码</button>
+</block>
 </view>

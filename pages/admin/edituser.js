@@ -6,8 +6,70 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+  
   },
+  getChangeName:function(e){
+    this.setData({full_name:e.detail.value})
+  },
+
+  getChangePassowrd:function(e){
+    this.setData({password:e.detail.value})
+  },
+
+  changestatus: function() {
+    if (this.data.is_active) {
+  
+      this.setData({
+        pictype: true,
+        is_active:false
+      })
+    } else {
+     
+      this.setData({
+        pictype: false,
+        is_active: true
+
+      })
+    }
+  },
+
+
+
+
+
+  changePassowrd: function() {
+    if (this.data.changpassword) {
+      this.setData({
+        changpassword: false,
+        defaultTypepsw: false,
+        password:""
+      })
+    } else {
+      this.setData({
+        changpassword: true,
+        defaultTypepsw: true,
+        // full_name: that.data.results.full_name
+      })
+    }
+  },
+
+  eyeStatus: function() {
+    if (this.data.defaultType) {
+      this.setData({
+        passwordType: false,
+        defaultType: false,
+        full_name: this.data.results.full_name
+      })
+    } else {
+      this.setData({
+        passwordType: true,
+        defaultType: true,
+        // full_name: that.data.results.full_name
+      })
+    }
+  },
+
+
   getUserInfo: function(){
     var that = this;
     wx.request({
@@ -20,10 +82,37 @@ Page({
       if (res.statusCode == 200){
         that.setData({results: res.data})
         console.log(that.data.results)
+        that.setData({is_active: res.data.is_active})
       }
       }
     })
   },
+
+  updateUserInfo:function(){
+    var that = this;
+    wx.request({
+      url: 'http://192.168.1.104:8888/api/v1/users/'+appInstance.globalData.email,
+      data:{
+        email:appInstance.globalData.email,
+        full_name: that.data.full_name,
+        is_active: that.data.is_active,
+        is_superuser: false,
+        password: that.data.password
+      },
+      method:"PUT",
+      header: {
+        "content-type": "application/json",
+        "authorization": appInstance.globalData.cookie
+      },
+      success:function(res){
+        that.setData({echo:true})
+      console.log(res)
+      // appInstance.globalData.cookie = ''
+      
+      }
+    })
+  },
+
   getclick:function(e){
 
   },
@@ -32,6 +121,11 @@ Page({
    */
   onLoad: function (options) {
   this.getUserInfo()
+  this.setData({
+    passwordType: false,
+    defaultType: false,
+    password:"",
+  })
   },
 
   /**
