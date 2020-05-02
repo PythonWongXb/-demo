@@ -15,7 +15,9 @@ Page({
    */
   editInfo:function(e){
   appInstance.globalData.email = e.currentTarget.dataset.email
+  appInstance.globalData.id = e.currentTarget.dataset.id
   console.log(appInstance.globalData.email)
+  console.log(appInstance.globalData.id)
   wx.navigateTo({
     url: '../admin/edituser',
   })

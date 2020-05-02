@@ -9,15 +9,14 @@
 <input placeholder="请输入更改后的用户名" maxlength="32" bindinput="getChangeName"></input>
 </block>
 
-<view class="yn">
-<view>冻结情况：</view>
-<block wx:if="{{is_active}}"><view>激活状态</view></block>
-<block wx:else><view>冻结中</view></block>
-<image src='{{pictype? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changestatus'></image>
-</view>
-
-
-
+<block wx:if="{{ results.is_superuser == false }}">
+  <view class="yn">
+  <view>冻结情况：</view>
+  <block wx:if="{{is_active}}"><view>激活状态</view></block>
+  <block wx:else><view>冻结中</view></block>
+  <image src='{{pictype? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changestatus'></image>
+  </view>
+</block>
 
 <view class="yn">
 <view>修改密码</view>
@@ -26,7 +25,31 @@
 <block wx:if="{{ changpassword }}">
 <input placeholder="修改后的密码" bindinput="getChangePassowrd"></input>
 </block>
-<button bindtap="updateUserInfo">提交</button>
 
-<block wx:if="{{ echo }}"><view>提交成功</view></block>
+<!-- 用户信息 -->
+<!-- 1.积分 -->
+<view class="yn">
+<view>当前用户积分{{results.scores}}</view>
+<image src='{{scorestype? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changescores'></image>
+</view>
+<block wx:if="{{ ChangeScore }}">
+<input type="number" placeholder="修改后的积分" bindinput="getChangeScores"></input>
+</block>
+
+<!-- 2.次数 -->
+<view class="yn">
+<view>当前剩余次数{{results.time}}</view>
+<image src='{{timetype? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changetime'></image>
+</view>
+<block wx:if="{{ ChangeTime }}">
+<input type="number" placeholder="修改后的次数" bindinput="getChangeTime"></input>
+</block>
+
+<button bindtap="updateUserInfo">修改账号信息</button>
+<block wx:if="{{ echo }}">
+<view>修改账号信息成功</view>
+</block>
+
+
+<block wx:if="{{ error}}"><view>修改账号信息失败</view></block>
 

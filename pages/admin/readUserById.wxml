@@ -17,7 +17,7 @@
     <view>email： {{result.email}}</view>
     <!-- <view>未被被冻结：{{result.is_active}}</view> -->
     <view>名称：{{result.full_name}}</view>
-    <image src="../images/open.gif" data-email="{{ result.email }}" bindtap="editInfo"></image>
+    <image src="../images/open.gif" data-email="{{ result.email }}" data-id="{{result.id}}" bindtap="editInfo"></image>
     <!-- <view>id数字：{{result.id}}</view> -->
   </view>
 </block>
@@ -28,7 +28,7 @@
     <view>email： {{item.email}}</view>
     <!-- <view>未被被冻结：{{item.is_active}}</view> -->
     <view>名称：{{item.full_name}}</view>
-    <image src="../images/open.gif" data-email="{{ item.email }}" bindtap="editInfo"></image>
+    <image src="../images/open.gif" data-email="{{ item.email }}" data-id="{{item.id}}" bindtap="editInfo"></image>
     <!-- <view>id数字：{{item.id}}</view> -->
   </view>
 </view>

@@ -8,12 +8,11 @@
 <block wx:else>
   <view>亲爱的 {{result.full_name}} 用户! 欢迎登录本系统 </view>
 
-<view>尊敬的会员</view>
-<view>您的剪头次数还剩：{{ time }}次</view>
-<view>您的的积分累计为 {{  scores }} </view>
+<view>您的剪头次数还剩：{{ result.time }}次</view>
+<view>您的的积分累计为 {{  result.scores }} </view>
 <view bindtap="gifts">足够积分可以兑换好礼哦！点击查看详细积分兑换介绍</view>
 
-<view></view>
+
 <button bindtap="goToeditInfos">编辑个人信息</button>
 <button bindtap="goTorestPassword">重置密码</button>
 </block>

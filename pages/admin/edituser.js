@@ -8,15 +8,92 @@ Page({
   data: {
   
   },
+  getChangeScores:function(e){
+    this.setData({scores: e.detail.value})
+  },
+  getChangeTime:function(e){
+    this.setData({time: e.detail.value})
+  },
   getChangeName:function(e){
     this.setData({full_name:e.detail.value})
   },
-
   getChangePassowrd:function(e){
     this.setData({password:e.detail.value})
   },
 
-  changestatus: function() {
+  record:function(){
+    var that = this;
+    wx.request({
+      url: 'http://192.168.1.104:8888/api/v1/items/',
+      data:{
+        item_in:{
+        earn_score: that.data.scores,
+        cost_money: 0
+        },
+        item_id:appInstance.globalData.id
+  
+      },
+      method:"POST",
+      header: {
+        "content-type": "application/json",
+        "authorization": appInstance.globalData.cookie
+      },
+      success:function(res){
+
+        if(res.statusCode==200){
+          that.setData({echo:true})
+          wx.navigateTo({
+            url: '../admin/edituser',
+          })
+        }else{
+          that.setData({error: true})
+        }
+        
+      // console.log(res)
+      // appInstance.globalData.cookie = ''
+      
+      }
+      
+    })
+  },
+
+  changescores: function() {
+    if (this.data.ChangeScore) {
+  
+      this.setData({
+        ChangeScore: false,
+        scorestype:false,
+        scores:this.data.results.scores
+      })
+    } else {
+     
+      this.setData({
+        ChangeScore: true,
+        scorestype: true
+
+      })
+    }
+  },
+
+  changetime: function() {
+    if (this.data.ChangeTime) {
+  
+      this.setData({
+        ChangeTime: false,
+        timetype:false,
+        time:this.data.results.time
+      })
+    } else {
+     
+      this.setData({
+        ChangeTime: true,
+        timetype: true
+
+      })
+    }
+  },
+
+changestatus: function() {
     if (this.data.is_active) {
   
       this.setData({
@@ -32,10 +109,6 @@ Page({
       })
     }
   },
-
-
-
-
 
   changePassowrd: function() {
     if (this.data.changpassword) {
@@ -82,7 +155,13 @@ Page({
       if (res.statusCode == 200){
         that.setData({results: res.data})
         console.log(that.data.results)
-        that.setData({is_active: res.data.is_active})
+        that.setData({
+          is_active: res.data.is_active,
+          time: res.data.time,
+          scores: res.data.scores,
+          full_name: res.data.full_name,
+
+        })
       }
       }
     })
@@ -96,8 +175,10 @@ Page({
         email:appInstance.globalData.email,
         full_name: that.data.full_name,
         is_active: that.data.is_active,
-        is_superuser: false,
-        password: that.data.password
+        is_superuser:that.data.is_superuser,
+        password: that.data.password,
+        scores: that.data.scores,
+        time: that.data.time
       },
       method:"PUT",
       header: {
@@ -105,12 +186,20 @@ Page({
         "authorization": appInstance.globalData.cookie
       },
       success:function(res){
-        that.setData({echo:true})
-      console.log(res)
+        // that.setData({echo:true})
+        if(res.statusCode==200){
+          console.log(res)
+          that.record()
+        }else{
+          that.setData({error: true})
+        }
+        
+        
       // appInstance.globalData.cookie = ''
       
       }
     })
+
   },
 
   getclick:function(e){
@@ -125,6 +214,8 @@ Page({
     passwordType: false,
     defaultType: false,
     password:"",
+    ChangeScore:false,
+    ChangeTime:false,
   })
   },
 

@@ -9,6 +9,26 @@ Page({
   data: {
 
   },
+
+  getUserNum: function(){
+    var that = this;
+    wx.request({
+      url: 'http://192.168.1.104:8888/api/v1/users/SearchEmail/'+that.data.email,
+      header: {
+        "content-type": "application/json",
+        "authorization": appInstance.globalData.cookie
+      },
+      success: function(res){
+      if (res.statusCode == 200){
+        that.setData({result: res.data})
+      
+       
+      }
+      
+      }
+    })
+  },
+
   getUser: function(){
     var that = this;
     wx.request({
@@ -18,9 +38,10 @@ Page({
         "authorization": appInstance.globalData.cookie
       },
       success: function(res){
-      that.setData({result: res.data})
-      console.log(that.data.result)
+      that.setData({email: res.data.email})
+      that.getUserNum()
       }
+
     })
   },
   /**

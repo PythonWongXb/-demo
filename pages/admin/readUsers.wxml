@@ -4,6 +4,8 @@
      <view>用户email：{{item.email}}</view>
      <view>用户Id：{{item.id}}</view>
      <view>用户名称：{{item.full_name}}</view>
-     <view>用户活跃情况：{{item.is_active}}</view>
+     <!-- <view>用户剩余剪头次数{{ item.time }}</view>
+     <view>用户积分{{ item.scores }}</view>
+     <<view>用户活跃情况：{{item.is_active}}</view> -->
     </view>
 </view>
