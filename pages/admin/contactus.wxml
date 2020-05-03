@@ -1,0 +1,39 @@
+<!--pages/login/login.wxml-->
+<view class="content">
+
+ 
+  <view class="account">
+    <view class="title">用户账号</view>
+    <view class="num"><input bindinput="getAccountEmail" placeholder="要找回密码的手机号" placeholder-style="color:#999999;"/></view>
+  </view>
+ 
+  <!-- 请输入验证码 -->
+
+  <image class="image" src="{{imageLoad}}" bindtap="guid"></image>
+  <view class="account">
+    <view class="title">图片验证码</view>
+    <view class="num"><input type="number" maxlength="4" bindinput="getNumber" placeholder="请输入图片验证码" placeholder-style="color:#999999;"/></view>
+  </view>
+
+ <view class="account">
+    <view class="title">短信验证码</view>
+    <block wx:if="{{ gotmessage }}">
+    <view class="num">
+    <input type="number" bindinput="getmessage" placeholder="请输入短信验证码" placeholder-style="color:#999999;"/>
+    </view>
+    </block>
+    <block wx:else>
+    <text class="identify_code" bindtap="postPicIdentifyCode">输入验证码后点击获取</text>
+    </block>
+  </view>
+<block wx:if="{{ inputpassword }}">
+<view class="account" >
+    <view class="title">新密码</view>
+    <view class="num"><input bindinput="getNewPassword" placeholder="请输入新密码" placeholder-style="color:#999999;"/></view>
+  </view>
+</block>
+<view>{{ result }}</view>
+<view>{{ res }}</view>
+<button class="btn" disabled="{{disabled}}" type="{{btnstate}}"bindtap="restPassword">提交</button>
+</view>
+

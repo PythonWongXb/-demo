@@ -13,6 +13,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  contactus:function(){
+    wx.navigateTo({
+      url: '../admin/contactus',
+    })
+  },
+
   changeme(){
     console.log('文本框变化了');
     },

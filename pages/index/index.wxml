@@ -2,7 +2,7 @@
 <view class="content">
   <view class="account">
     <view class="title">账号</view>
-    <view class="num"><input bindinput="getAccountInput" placeholder="用户名/邮箱/手机号" placeholder-style="color:#999999;"/></view>
+    <view class="num"><input bindinput="getAccountInput" placeholder="请输入手机号" placeholder-style="color:#999999;"/></view>
   </view>
   <view class="hr"></view>
   <view class="account">
@@ -25,7 +25,8 @@
 <view class="operate">
   <view><navigator url="../register/register">用户注册</navigator></view>
   <!-- <view><navigator url="../company/company">企业用户注册</navigator></view> -->
-  <view bindtap="restpassword">找回密码</view>
+  <view bindtap="restpassword">联系我们</view>
+  <view bindtap="contactus">找回密码</view>
 </view>
 <!-- <view class="login">
   <view><image src="/images/wxlogin.gif" style="width:60px;height:40px;"></image></view>
