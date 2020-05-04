@@ -1,1 +1,17 @@
-/* pages/all/editUserInfo.wxss */
+/* pages/admin/edituser.wxss */
+.image{
+  display:flex;
+  vertical-align: middle;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+}
+
+.yn{
+  display: flex;
+  flex-direction: raw;
+}
+.charge{
+  background-color: chartreuse;
+}

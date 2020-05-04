@@ -11,7 +11,8 @@
     "pages/admin/contactus",
     "pages/all/restUserPassword",
     "pages/all/editUserInfo",
-    "pages/gifts/gifts"
+    "pages/gifts/gifts",
+    "pages/charge/charge"
   
   ],
   "window":{
