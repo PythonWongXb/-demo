@@ -1,6 +1,7 @@
 <!--pages/admin/edituser.wxml-->
 <view>用户编号{{results.id}}</view>
-<view>用户为：{{results.email}}</view>
+<view wx:if="{{ results.is_wechat }}"></view>
+<view wx:else>用户为：{{results.email}}</view>
 <view class="yn">
 <view>当前用户名：{{results.full_name}}</view>
 <image src='{{defaultType? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='eyeStatus'></image>
@@ -38,11 +39,17 @@
 <view>当前剩余次数{{results.time}}</view>
 </view>
 
+<view class="yn">
+<view wx:if="{{results.bind}}">绑定手机号为{{results.bind}}</view>
+<view wx:else>未绑定手机号</view>
+<view bindtap="">点击绑定手机</view>
+</view>
+
+
+
 <button bindtap="updateUserInfo">修改账号信息</button>
 <block wx:if="{{ echo }}">
 <view>修改账号信息成功</view>
 </block>
-
-
 <block wx:if="{{ error}}"><view>修改账号信息失败</view></block>
 

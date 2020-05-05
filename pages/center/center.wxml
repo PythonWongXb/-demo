@@ -14,6 +14,7 @@
 
 
 <button bindtap="goToeditInfos">编辑个人信息</button>
-<button bindtap="goTorestPassword">重置密码</button>
+<button bindtap="goTorestPassword">联系我们</button>
+
 </block>
 </view>
