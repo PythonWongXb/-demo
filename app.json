@@ -12,7 +12,8 @@
     "pages/all/restUserPassword",
     "pages/all/editUserInfo",
     "pages/gifts/gifts",
-    "pages/charge/charge"
+    "pages/charge/charge",
+    "pages/wechat/wechatlogin"
   
   ],
   "window":{
