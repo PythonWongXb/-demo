@@ -8,10 +8,22 @@
   border-radius: 4px;
 }
 
+
+
 .yn{
   display: flex;
   flex-direction: raw;
 }
 .charge{
   background-color: chartreuse;
+}
+
+.images{
+  display:flex;
+  vertical-align: middle;
+  justify-content: center;
+  width: 90px;
+  height: 30px;
+  border-radius: 4px;
+
 }

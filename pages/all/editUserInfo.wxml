@@ -39,13 +39,25 @@
 <view>当前剩余次数{{results.time}}</view>
 </view>
 
+<block wx:if="{{ results.is_wechat }}">
 <view class="yn">
 <view wx:if="{{results.bind}}">绑定手机号为{{results.bind}}</view>
 <view wx:else>未绑定手机号</view>
-<view bindtap="">点击绑定手机</view>
+<image src='{{BindPhone? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changephone'></image>
+<block wx:if="{{ bindphone }}">
+<view class="">
+<input placeholder="要绑定的手机号" bindinput="getnewbindphone"></input>
+<input placeholder="要绑定的手机号的密码" bindinput="getnewbindpassword"></input>
+<image class="images" src="{{imageLoad}}" bindtap="guid"></image>
+<input placeholder="验证码" bindinput="getidentifycode"></input>
 </view>
-
-
+</block>
+</view>
+</block>
+{{getphone}}
+{{newbindphone}}
+{{newbindpassword}}
+{{identifycode}}
 
 <button bindtap="updateUserInfo">修改账号信息</button>
 <block wx:if="{{ echo }}">
@@ -53,3 +65,4 @@
 </block>
 <block wx:if="{{ error}}"><view>修改账号信息失败</view></block>
 
+<button bindtap="go">提交</button>
