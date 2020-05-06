@@ -1,4 +1,5 @@
 <!--pages/login/login.wxml-->
+<block wx:if="{{ normallogin }}">
 <view class="content">
   <view class="account">
     <view class="title">账号</view>
@@ -21,7 +22,7 @@
   </view>
 <view class="hr"></view>
 <view>{{ result }}</view>
-<button class="btn" disabled="{{disabled}}" type="{{btnstate}}"bindtap="formSubmit">登录</button>
+<button class="btn" disabled="{{disabled}}" type="{{btnstate}}"bindtap="formSubmit">账号密码登录</button>
 <view class="operate">
   <view><navigator url="../register/register">用户注册</navigator></view>
   <!-- <view><navigator url="../company/company">企业用户注册</navigator></view> -->
@@ -29,11 +30,16 @@
   <view bindtap="contactus">找回密码</view>
 </view>
 </view>
+
+</block>
+
 <block wx:if="{{ wechatlogin }}">
 <image class="image" src="{{imageLoad}}" bindtap="guid"></image>
   <view class="account">
     <view class="title">验证码</view>
     <view class="num"><input type="number" maxlength="4" bindinput="getNumber" placeholder="请输入验证码" placeholder-style="color:#999999;"/></view>
   </view>
+  <view>{{ result }}</view>
 </block>
 <button bindtap="login" open-type="getUserInfo" bindgetuserinfo="getUserInfoWechat">微信登录</button>
+<text bindtap="NormalLogin">账号密码登录</text>

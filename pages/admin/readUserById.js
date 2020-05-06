@@ -36,7 +36,7 @@ Page({
     this.setData({result:"",results:"",error:""})
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/SearchEmail/'+that.data.usernum,
+      url: 'http://192.168.1.101:8888/api/v1/users/SearchEmail/'+that.data.usernum,
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie
@@ -60,7 +60,7 @@ Page({
     this.setData({result:"",results:"",error:""})
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/SearchId/'+that.data.userid,
+      url: 'http://192.168.1.101:8888/api/v1/users/SearchId/'+that.data.userid,
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie
@@ -84,7 +84,7 @@ Page({
     this.setData({result:"",results:"",error:""})
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/SearchName/'+that.data.username,
+      url: 'http://192.168.1.101:8888/api/v1/users/SearchName/'+that.data.username,
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie

@@ -18,6 +18,8 @@
   </view>
 </block>
 
+<block wx:if="{{results.is_wechat}}"></block>
+<block wx:else>
 <view class="yn">
 <view>修改密码</view>
 <image src='{{defaultTypepsw? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changePassowrd'></image>
@@ -25,7 +27,7 @@
 <block wx:if="{{ changpassword }}">
 <input placeholder="修改后的密码" bindinput="getChangePassowrd"></input>
 </block>
-
+</block>
 <!-- 用户信息 -->
 <!-- 1.积分 -->
 <view class="yn">
@@ -44,25 +46,34 @@
 <view wx:if="{{results.bind}}">绑定手机号为{{results.bind}}</view>
 <view wx:else>未绑定手机号</view>
 <image src='{{BindPhone? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changephone'></image>
-<block wx:if="{{ bindphone }}">
-<view class="">
-<input placeholder="要绑定的手机号" bindinput="getnewbindphone"></input>
-<input placeholder="要绑定的手机号的密码" bindinput="getnewbindpassword"></input>
-<image class="images" src="{{imageLoad}}" bindtap="guid"></image>
-<input placeholder="验证码" bindinput="getidentifycode"></input>
 </view>
 </block>
+
+<block wx:if="{{ bindphone }}">
+<view class="yn">
+<text>要绑定的手机号</text>
+<input placeholder="要绑定的手机号" bindinput="getnewbindphone"></input>
 </view>
+<view class="yn">
+<text>手机号的登录密码</text>
+<input placeholder="手机号登录密码" bindinput="getnewbindpassword"></input>
+</view>
+<image class="images" src="{{imageLoad}}" bindtap="guid"></image>
+<view class="yn">
+<text>验证码</text>
+<input placeholder="验证码" bindinput="getidentifycode"></input>
+</view>
+
 </block>
 {{getphone}}
 {{newbindphone}}
 {{newbindpassword}}
 {{identifycode}}
 
-<button bindtap="updateUserInfo">修改账号信息</button>
+<text wx:if="{{ bind }}">账号密码正确，点击绑定</text>
+<button wx:if="{{ bind }}" bindtap="updateUserInfo">确认绑定</button>
+<button wx:else bindtap="updateUserInfo">修改账号信息</button>
 <block wx:if="{{ echo }}">
 <view>修改账号信息成功</view>
 </block>
 <block wx:if="{{ error}}"><view>修改账号信息失败</view></block>
-
-<button bindtap="go">提交</button>

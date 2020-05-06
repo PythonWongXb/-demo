@@ -39,7 +39,7 @@ Page({
   formSubmit: function (e) {
     var that = this;
     wx.request({
-     url: 'http://192.168.1.104:8888/api/v1/users/open',
+     url: 'http://192.168.1.101:8888/api/v1/users/open',
      data: {
       "full_name": that.data.name,
       "password_1": that.data.password_1,
@@ -72,7 +72,7 @@ Page({
    },
    guid: function(){
     var r = "wxb"+(((1+Math.random())*0x10000)|0).toString(16).substring(1) +"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1)+"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1)+"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1) 
-    this.setData({imageLoad: "http://192.168.1.104:8888/api/v1/identify/" + r})
+    this.setData({imageLoad: "http://192.168.1.101:8888/api/v1/identify/" + r})
     this.setData({imagecode:"image_code_"+r})
     // console.log(r)
    },

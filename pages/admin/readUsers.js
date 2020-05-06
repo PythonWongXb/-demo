@@ -11,7 +11,7 @@ Page({
   getUser: function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/SearchAll',
+      url: 'http://192.168.1.101:8888/api/v1/users/SearchAll',
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie

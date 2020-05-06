@@ -7,9 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info: ''
+    info: '',
+    normallogin: true
   },
-
+  NormalLogin:function(){
+    this.setData({normallogin: true})
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -21,16 +24,16 @@ Page({
   },
   
   login:function(){
-    
+
     var that = this;
-    that.setData({wechatlogin: true})
+    that.setData({wechatlogin: true, normallogin: false})
     wx.login({
       success (res) {
         // console.log(res)
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'http://192.168.1.104:8888/api/v1/payment/openid/',
+            url: 'http://192.168.1.101:8888/api/v1/payment/openid/',
             data: {
               code: res.code
             },
@@ -44,7 +47,7 @@ Page({
               // console.log(appInstance.globalData.session_key)
               // console.log(appInstance.globalData.userInfo.nickName)
               wx.request({
-                url: 'http://192.168.1.104:8888/api/v1/users/CreatUserByWeChat',
+                url: 'http://192.168.1.101:8888/api/v1/users/CreatUserByWeChat',
                 method: "POST",
                 data:{
                   full_name: appInstance.globalData.userInfo.nickName,
@@ -61,7 +64,7 @@ Page({
                   }
     
                     wx.request({
-                     url: 'http://192.168.1.104:8888/api/v1/login/access-token',
+                     url: 'http://192.168.1.101:8888/api/v1/login/access-token',
                      data: {
                       "username": appInstance.globalData.openid+"wxb",
                       "password": appInstance.globalData.openid+"wxb",
@@ -121,7 +124,7 @@ Page({
   formSubmit: function (e) {
     var that = this;
     wx.request({
-     url: 'http://192.168.1.104:8888/api/v1/login/access-token',
+     url: 'http://192.168.1.101:8888/api/v1/login/access-token',
      data: {
       "username": that.data.accout,
       "password": that.data.password,
@@ -150,7 +153,7 @@ Page({
    },
    guid: function(){
     var r = "wxb"+(((1+Math.random())*0x10000)|0).toString(16).substring(1) +"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1)+"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1)+"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1) 
-    this.setData({imageLoad: "http://192.168.1.104:8888/api/v1/identify/" + r})
+    this.setData({imageLoad: "http://192.168.1.101:8888/api/v1/identify/" + r})
     this.setData({imagecode:"image_code_"+r})
     // console.log(r)
    },

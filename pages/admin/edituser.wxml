@@ -1,6 +1,13 @@
 <!--pages/admin/edituser.wxml-->
 <view>用户编号{{results.id}}</view>
+
+<block wx:if="{{ results.is_wechat }}">
+<view>用户为：微信用户</view>
+</block>
+<block wx:else>
+
 <view>用户为：{{results.email}}</view>
+</block>
 <view class="yn">
 <view>当前用户名：{{results.full_name}}</view>
 <image src='{{defaultType? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='eyeStatus'></image>
@@ -18,12 +25,15 @@
   </view>
 </block>
 
+<block wx:if="{{ results.is_wechat }}"></block>
+<block wx:else>
 <view class="yn">
 <view>修改密码</view>
 <image src='{{defaultTypepsw? "../images/close.gif": "../images/open.gif"}}' class='image' bindtap='changePassowrd'></image>
 </view>
 <block wx:if="{{ changpassword }}">
 <input placeholder="修改后的密码" bindinput="getChangePassowrd"></input>
+</block>
 </block>
 
 <!-- 用户信息 -->

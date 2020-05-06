@@ -24,7 +24,7 @@ Page({
   record:function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/items/',
+      url: 'http://192.168.1.101:8888/api/v1/items/',
       data:{
         item_in:{
         earn_score: that.data.scores,
@@ -146,7 +146,7 @@ changestatus: function() {
   getUserInfo: function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/SearchEmail/'+ appInstance.globalData.email,
+      url: 'http://192.168.1.101:8888/api/v1/users/SearchEmail/'+ appInstance.globalData.email,
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie
@@ -170,7 +170,7 @@ changestatus: function() {
   updateUserInfo:function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/'+appInstance.globalData.email,
+      url: 'http://192.168.1.101:8888/api/v1/users/'+appInstance.globalData.email,
       data:{
         email:appInstance.globalData.email,
         full_name: that.data.full_name,

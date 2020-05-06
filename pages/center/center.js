@@ -13,7 +13,7 @@ Page({
   getUserNum: function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/SearchEmail/'+that.data.email,
+      url: 'http://192.168.1.101:8888/api/v1/users/SearchEmail/'+that.data.email,
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie
@@ -32,7 +32,7 @@ Page({
   getUser: function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/me',
+      url: 'http://192.168.1.101:8888/api/v1/users/me',
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie

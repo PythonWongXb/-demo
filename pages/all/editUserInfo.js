@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  bind: ""
+  // bind: ""
   },
 
   go:function(){
@@ -14,7 +14,7 @@ Page({
     if(this.data.bindphone){
       // 请求验证密码
         wx.request({
-         url: 'http://192.168.1.104:8888/api/v1/login/access-token',
+         url: 'http://192.168.1.101:8888/api/v1/login/access-token',
          data: {
           "username": that.data.newbindphone,
           "password": that.data.newbindpassword,
@@ -46,7 +46,7 @@ Page({
 
   guid: function(){
     var r = "wxb"+(((1+Math.random())*0x10000)|0).toString(16).substring(1) +"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1)+"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1)+"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1) 
-    this.setData({imageLoad: "http://192.168.1.104:8888/api/v1/identify/" + r})
+    this.setData({imageLoad: "http://192.168.1.101:8888/api/v1/identify/" + r})
     this.setData({imagecode:"image_code_"+r})
   
    },
@@ -87,7 +87,7 @@ Page({
   record:function(){
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/items/',
+      url: 'http://192.168.1.101:8888/api/v1/items/',
       data:{
         item_in:{
         earn_score: that.data.scores,
@@ -214,7 +214,7 @@ changestatus: function() {
     
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/me',
+      url: 'http://192.168.1.101:8888/api/v1/users/me',
       header: {
         "content-type": "application/json",
         "authorization": appInstance.globalData.cookie
@@ -235,10 +235,11 @@ changestatus: function() {
   },
 
   updateUserInfo:function(){
+    
     this.go()
     var that = this;
     wx.request({
-      url: 'http://192.168.1.104:8888/api/v1/users/me',
+      url: 'http://192.168.1.101:8888/api/v1/users/me',
       data:{
         email:that.data.email,
         full_name: that.data.full_name,
@@ -263,9 +264,9 @@ changestatus: function() {
         
       // appInstance.globalData.cookie = ''
       
-      }
-    })
-
+        }
+      })
+  
   },
 
   getclick:function(e){

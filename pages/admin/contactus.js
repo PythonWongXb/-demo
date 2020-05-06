@@ -21,7 +21,7 @@ Page({
   restPassword: function(){
     var that = this;
     wx.request({
-     url: 'http://192.168.1.104:8888/api/v1/reset-password/',
+     url: 'http://192.168.1.101:8888/api/v1/reset-password/',
      data: {
       message_email: that.data.email,
       message_code: that.data.message_code,
@@ -51,7 +51,7 @@ Page({
   postPicIdentifyCode: function(){
     var that = this;
     wx.request({
-     url: 'http://192.168.1.104:8888/api/v1/password-recovery/',
+     url: 'http://192.168.1.101:8888/api/v1/password-recovery/',
      data: {
       answer: that.data.answer,
       email: that.data.email,
@@ -82,7 +82,7 @@ Page({
 
    guid: function(){
     var r = "wxb"+(((1+Math.random())*0x10000)|0).toString(16).substring(1) +"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1)+"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1)+"-"+ (((1+Math.random())*0x10000)|0).toString(16).substring(1) 
-    this.setData({imageLoad: "http://192.168.1.104:8888/api/v1/identify/" + r})
+    this.setData({imageLoad: "http://192.168.1.101:8888/api/v1/identify/" + r})
     this.setData({imagecode:"image_code_"+r})
     // console.log(r)
    },
@@ -93,7 +93,7 @@ Page({
    getmessage:function(e){
     console.log(e)
     this.setData({message_code: e.detail.value})
-    if(e.detail.cursor==6){
+    if(e.detail.cursor==4){
       this.setData({inputpassword: true})
     }
     
